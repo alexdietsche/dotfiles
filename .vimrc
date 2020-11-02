@@ -5,7 +5,7 @@ set nocompatible
 filetype off
 
 " Turn syntax highlighting on
-set t_Co=256                " enable 256 colors
+"set t_Co=256                " enable 256 colors
 syntax on
 
 
@@ -13,23 +13,31 @@ syntax on
 call plug#begin('~/.vim/plugged')
 
 " List of plugins
+Plug 'sheerun/vim-polyglot'                             " syntax highlighting
+Plug 'davidhalter/jedi-vim'                             " code completion based on jedi
 Plug 'itchyny/lightline.vim'                            " light status line
+Plug 'preservim/nerdtree'                               " file system explorer
 Plug 'tpope/vim-fugitive'                               " git wrapper
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'                                 " fuzzy finder
-Plug 'stsewd/fzf-checkout.vim'                          " fzf to manage branches and tags
+Plug 'junegunn/fzf.vim'                                 " fuzzy finder'
+Plug 'stsewd/fzf-checkout.vim'                          " fzf to manage branches and tags'
+Plug 'airblade/vim-rooter'                              " sets git top directory as root 
+Plug 'tpope/vim-commentary'                             " comment lines and sections
+Plug 'jiangmiao/auto-pairs'                             " insert or delete brackts, parents and quotes in pair
 
 " List ends here. Plugins become visible to Vim after this call
 call plug#end()
 
 
 " Color scheme
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+colorscheme onedark
+
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'onedark',
     \}
-colorscheme solarized
+
 
 
 " For plugins to load correctly
@@ -69,30 +77,34 @@ set hlsearch                " Highlight matching search patterns
 set incsearch               " Enable incremental search
 map <leader><space> :let @/=''<cr>
 
-" Autocomplete braces and quotes
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" NERDTree
+nmap <C-N> : NERDTreeToggle<CR>
+
 " git
 nnoremap <leader>gb :GBranches<CR>
 nnoremap <leader>gs :G<CR>
-"let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+
+" fzf
 let $FZF_DEFAULT_OPTS='--reverse'
+map <C-f> <Esc><Esc>:Files!<CR>
+inoremap <C-f> <Esc><Esc>:BLines!<CR>
+
+" vim-rooter
+let g:rooter_silent_chdir = 1   " no output when changing dir
 
 " copy current buffer
 nmap <leader>y ggVG"+y 
 
 
-" compile cpp
+" compile and run cpp program
 autocmd filetype cpp nnoremap <F5> :w <bar> !g++ -std=c++11 -Wall % -o %:r && ./%:r <CR>
+
+" run python script
+autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>

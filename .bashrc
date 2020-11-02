@@ -141,3 +141,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# fzf 
+export FZF_DEFAULT_COMMAND='fd --type f'
