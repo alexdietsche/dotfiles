@@ -141,5 +141,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# fzf 
+# neovim
+alias v='nvim'
+
+# fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
+
+# semester project
+alias semp='cd ~/git/line_tracking_using_event_cameras/ &&  source env/line-tracking-env/bin/activate'

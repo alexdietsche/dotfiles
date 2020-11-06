@@ -10,7 +10,7 @@ syntax on
 
 
 " Plugins vim-plug
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " List of plugins
 Plug 'sheerun/vim-polyglot'                             " syntax highlighting
@@ -27,6 +27,7 @@ Plug 'stsewd/fzf-checkout.vim'                          " fzf to manage branches
 Plug 'airblade/vim-rooter'                              " sets git top directory as root
 Plug 'tpope/vim-commentary'                             " comment lines and sections
 Plug 'jiangmiao/auto-pairs'                             " insert or delete brackts, parents and quotes in pair
+Plug 'joshdick/onedark.vim'                             " color scheme
 
 " List ends here. Plugins become visible to Vim after this call
 call plug#end()
