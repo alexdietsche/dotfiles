@@ -5,9 +5,7 @@ set nocompatible
 filetype off
 
 " Turn syntax highlighting on
-"set t_Co=256                " enable 256 colors
 syntax on
-
 
 " Plugins vim-plug
 call plug#begin('~/.config/nvim/plugged')
@@ -17,7 +15,8 @@ Plug 'sheerun/vim-polyglot'                             " syntax highlighting
 " Plug 'vim-syntastic/syntastic'                          " syntax checking plugin using external checker (eg flake8) and displays error
 Plug 'dense-analysis/ale'                               " asynchronous linting engine plugin
 Plug 'nvie/vim-flake8'                                  " static syntax checker and PEP8 style checker
-" Plug 'davidhalter/jedi-vim'                             " code completion based on jedi
+" Plug 'davidhalter/jedi-vim'                           " code completion based on jedi
+Plug 'puremourning/vimspector'                          " multi language graphical debugger for vim
 Plug 'itchyny/lightline.vim'                            " light status line
 Plug 'preservim/nerdtree'                               " file system explorer
 Plug 'tpope/vim-fugitive'                               " git wrapper
@@ -36,13 +35,9 @@ call plug#end()
 " Color scheme
 colorscheme onedark
 
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
 let g:lightline = {
     \ 'colorscheme': 'onedark',
     \}
-
-
 
 " For plugins to load correctly
 filetype plugin indent on
@@ -109,10 +104,16 @@ let g:ale_python_flake8_options = '--max-line-length=88'
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
-" Flake8 syntax checker and style highlighter
-" let g:flake8_show_in_file = 1
-" autocmd BufWritePost *.py call flake8#Flake8()
-" autocmd BufWritePost *.py call Flake8()
+" vimspector
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools']
+let g:vimspector_enable_mappings = 'HUMAN'
+nmap <leader>dd :call vimspector#Launch()<CR>
+nmap <leader>dx :VimspectorReset<CR>
+nmap <leader>de :VimspectorEval
+nmap <leader>dw :VimspectorWatch
+nmap <leader>do :VimspectorShowOutput
+
+
 
 " copy current buffer
 nmap <leader>y ggVG"+y
