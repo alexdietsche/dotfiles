@@ -85,10 +85,12 @@ nnoremap <C-H> <C-W><C-H>
 
 " NERDTree
 nmap <C-N> : NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " git
 nnoremap <leader>gb :GBranches<CR>
 nnoremap <leader>gs :G<CR>
+" nnoremap <leader>gc :GCheckout<CR>
 
 " fzf
 let $FZF_DEFAULT_OPTS='--reverse'
