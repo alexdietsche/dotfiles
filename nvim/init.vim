@@ -14,6 +14,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'sheerun/vim-polyglot'                             " syntax highlighting
 " Plug 'vim-syntastic/syntastic'                          " syntax checking plugin using external checker (eg flake8) and displays error
 Plug 'dense-analysis/ale'                               " asynchronous linting engine plugin
+Plug 'maximbaz/lightline-ale'                           " provides ALE indications in lightline
 Plug 'nvie/vim-flake8'                                  " static syntax checker and PEP8 style checker
 " Plug 'davidhalter/jedi-vim'                           " code completion based on jedi
 Plug 'puremourning/vimspector'                          " multi language graphical debugger for vim
@@ -26,6 +27,7 @@ Plug 'stsewd/fzf-checkout.vim'                          " fzf to manage branches
 Plug 'airblade/vim-rooter'                              " sets git top directory as root
 Plug 'tpope/vim-commentary'                             " comment lines and sections
 Plug 'jiangmiao/auto-pairs'                             " insert or delete brackts, parents and quotes in pair
+Plug 'Yggdroot/indentLine'                              " display indentation
 Plug 'joshdick/onedark.vim'                             " color scheme
 
 " List ends here. Plugins become visible to Vim after this call
@@ -35,9 +37,26 @@ call plug#end()
 " Color scheme
 colorscheme onedark
 
+" lightline
 let g:lightline = {
     \ 'colorscheme': 'onedark',
     \}
+" TODO fix lightline-ale (with this config the right side is replace instead of added)
+" let g:lightline.component_expand = {
+"       \  'linter_checking': 'lightline#ale#checking',
+"       \  'linter_infos': 'lightline#ale#infos',
+"       \  'linter_warnings': 'lightline#ale#warnings',
+"       \  'linter_errors': 'lightline#ale#errors',
+"       \  'linter_ok': 'lightline#ale#ok',
+"       \ }
+" let g:lightline.component_type = {
+"       \     'linter_checking': 'right',
+"       \     'linter_infos': 'right',
+"       \     'linter_warnings': 'warning',
+"       \     'linter_errors': 'error',
+"       \     'linter_ok': 'right',
+"       \ }
+" let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]] }
 
 " For plugins to load correctly
 filetype plugin indent on
@@ -90,6 +109,8 @@ nnoremap <leader>gb :GBranches<CR>
 nnoremap <leader>gs :G<CR>
 
 " fzf
+" TODO pop up not working
+" let g:fzf_layout = { 'window': { 'width' : 0.8, 'height' : 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 map <C-f> <Esc><Esc>:Files!<CR>
 inoremap <C-f> <Esc><Esc>:BLines!<CR>
@@ -123,5 +144,7 @@ nmap <leader>y ggVG"+y
 autocmd filetype cpp nnoremap <F5> :w <bar> !g++ -std=c++11 -Wall % -o %:r && ./%:r <CR>
 
 " run python script
-autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+" autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+" autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <C-F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <C-F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>

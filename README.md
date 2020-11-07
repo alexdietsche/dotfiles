@@ -28,7 +28,11 @@ Install vimspector gadgets, open nvim and call:
 :VimspectorInstall
 '''
 
-Install flake8 syntax and PEP8 style checker
+Install 
+flake8: syntax and PEP8 style checker
+black: python code formatter 
+isort: python imports formatter
 '''
-pip install flake8
+pip install flake8 black isort
 '''
+
