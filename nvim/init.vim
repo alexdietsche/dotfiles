@@ -13,8 +13,9 @@ call plug#begin('~/.config/nvim/plugged')
 " List of plugins
 Plug 'sheerun/vim-polyglot'                             " syntax highlighting
 " Plug 'vim-syntastic/syntastic'                          " syntax checking plugin using external checker (eg flake8) and displays error
-Plug 'dense-analysis/ale'                               " asynchronous linting engine plugin
-Plug 'maximbaz/lightline-ale'                           " provides ALE indications in lightline
+Plug 'neoclide/coc.nvim'                                " conquer of completion
+" Plug 'dense-analysis/ale'                               " asynchronous linting engine plugin
+" Plug 'maximbaz/lightline-ale'                           " provides ALE indications in lightline
 Plug 'nvie/vim-flake8'                                  " static syntax checker and PEP8 style checker
 " Plug 'davidhalter/jedi-vim'                           " code completion based on jedi
 Plug 'puremourning/vimspector'                          " multi language graphical debugger for vim
@@ -41,22 +42,6 @@ colorscheme onedark
 let g:lightline = {
     \ 'colorscheme': 'onedark',
     \}
-" TODO fix lightline-ale (with this config the right side is replace instead of added)
-" let g:lightline.component_expand = {
-"       \  'linter_checking': 'lightline#ale#checking',
-"       \  'linter_infos': 'lightline#ale#infos',
-"       \  'linter_warnings': 'lightline#ale#warnings',
-"       \  'linter_errors': 'lightline#ale#errors',
-"       \  'linter_ok': 'lightline#ale#ok',
-"       \ }
-" let g:lightline.component_type = {
-"       \     'linter_checking': 'right',
-"       \     'linter_infos': 'right',
-"       \     'linter_warnings': 'warning',
-"       \     'linter_errors': 'error',
-"       \     'linter_ok': 'right',
-"       \ }
-" let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]] }
 
 " For plugins to load correctly
 filetype plugin indent on
@@ -101,6 +86,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" tabs navigations
+map <C-t><up> :tabr<cr>
+map <C-t><down> :tabl<cr>
+map <C-t><left> :tabp<cr>
+map <C-t><right> :tabn<cr>
+
 " NERDTree
 nmap <C-N> : NERDTreeToggle<CR>
 
@@ -118,12 +109,17 @@ inoremap <C-f> <Esc><Esc>:BLines!<CR>
 " vim-rooter
 let g:rooter_silent_chdir = 1   " no output when changing dir
 
+" CoC
+let g:coc_global_extensions = ['coc-json', 'coc-python']
+source $HOME/.config/nvim/plug-config/coc.vim
+
+
 " ALE
-let g:ale_linters = {'python': ['flake8']}
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'isort']}
-let g:ale_python_flake8_options = '--max-line-length=88'
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
+" let g:ale_linters = {'python': ['flake8']}
+" let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'isort']}
+" let g:ale_python_flake8_options = '--max-line-length=88'
+" let g:ale_fix_on_save = 1
+" let g:ale_completion_enabled = 1
 
 " vimspector
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools']
@@ -133,7 +129,6 @@ nmap <leader>dx :VimspectorReset<CR>
 nmap <leader>de :VimspectorEval
 nmap <leader>dw :VimspectorWatch
 nmap <leader>do :VimspectorShowOutput
-
 
 
 " copy current buffer

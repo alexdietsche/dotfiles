@@ -22,17 +22,33 @@ Install vim plugins, open nvim and call:
 '''
 :PlugInstall
 '''
-
 Install vimspector gadgets, open nvim and call:
 '''
 :VimspectorInstall
 '''
 
-Install 
+Install
 flake8: syntax and PEP8 style checker
-black: python code formatter 
+pylint: syntax and PEP8 style checker
+black: python code formatter
 isort: python imports formatter
 '''
-pip install flake8 black isort
+pip install pylint black isort
 '''
 
+coc.nvim requirements:
+install nodejs >= 10.12, on ubuntu `18.04 default version is 8.x, to install 10.x run`:
+'''
+sudo apt update
+sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
+curl -sL https://deb.nodesource.com/setup_10.x | sudo bash
+
+sudo apt update
+sudo apt -y install gcc g++ make
+sudo apt -y install nodejs
+'''
+
+install ctags for coc-python
+'''
+sudo apt-get install ctags
+'''
