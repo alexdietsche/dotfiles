@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+#~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -121,7 +121,8 @@ source /opt/ros/melodic/setup.bash
 
 # source catkin workspace
 #source ~/spacebok/catkin_ws/devel/setup.bash
-alias ssim='source ~/setupeventsim.sh'
+# source ~/sim_ws/devel/setup.bash
+source ~/line_event_tracker_ws/devel/setup.bash
 
 # Add scripts to PATH
 export PATH=/home/alexdietsche/scripts:$PATH
@@ -146,6 +147,3 @@ alias v='nvim'
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
-
-# semester project
-alias semp='cd ~/git/line_tracking_using_event_cameras/ &&  source env/line-tracking-env/bin/activate'
