@@ -113,14 +113,6 @@ let g:rooter_silent_chdir = 1   " no output when changing dir
 let g:coc_global_extensions = ['coc-json', 'coc-python']
 source $HOME/.config/nvim/plug-config/coc.vim
 
-
-" ALE
-" let g:ale_linters = {'python': ['flake8']}
-" let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'isort']}
-" let g:ale_python_flake8_options = '--max-line-length=88'
-" let g:ale_fix_on_save = 1
-" let g:ale_completion_enabled = 1
-
 " vimspector
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools']
 let g:vimspector_enable_mappings = 'HUMAN'

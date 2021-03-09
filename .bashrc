@@ -117,30 +117,13 @@ if ! shopt -oq posix; then
 fi
 
 # source ros
-source /opt/ros/melodic/setup.bash
+# source /opt/ros/melodic/setup.bash
 
 # source catkin workspace
-#source ~/spacebok/catkin_ws/devel/setup.bash
-# source ~/sim_ws/devel/setup.bash
-source ~/line_event_tracker_ws/devel/setup.bash
+# source ~/spacebok/catkin_ws/devel/setup.bash
 
 # Add scripts to PATH
 export PATH=/home/alexdietsche/scripts:$PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/alexdietsche/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/alexdietsche/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/alexdietsche/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/alexdietsche/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # neovim
 alias v='nvim'
