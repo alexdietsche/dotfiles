@@ -40,11 +40,12 @@ install ctags for coc-python
 sudo apt-get install ctags
 ```
 
-
 Setup vim-plug:
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
+
+When first openning vim ignore the "Cannot find color scheme" warning. The color scheme will be installed when installing the vim-plug plugins.
 
 Install vim plugins, open nvim and call:
 ```
