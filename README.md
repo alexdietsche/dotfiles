@@ -47,12 +47,12 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 When first openning vim ignore the "Cannot find color scheme" warning. The color scheme will be installed when installing the vim-plug plugins.
 
-Install vim plugins, open nvim and call:
+Install vim plugins, open vim and call:
 ```
 :PlugInstall
 ```
 
-Install vimspector gadgets, open nvim and call:
+Install vimspector gadgets, open vim and call:
 ```
 :VimspectorInstall
 ```
