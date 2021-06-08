@@ -56,4 +56,10 @@ Install vimspector gadgets, open vim and call:
 ```
 :VimspectorInstall
 ```
+Setup Terminator
 
+To activate infinite scrollback in terminator in ``````````````````~/.config/terminator/config```````````````
+```
+[profiles]
+  [[default]]
+    scrollback_infinite = True
