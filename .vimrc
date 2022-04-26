@@ -12,8 +12,8 @@ call plug#begin('~/.vim/plugged')
 
 " List of plugins
 Plug 'sheerun/vim-polyglot'                             " syntax highlighting
-" Plug 'vim-syntastic/syntastic'                          " syntax checking plugin using external checker (eg flake8) and displays error
-Plug 'neoclide/coc.nvim'                                " conquer of completion
+" Plug 'vim-syntastic/syntastic'                           " syntax checking plugin using external checker (eg flake8) and displays error
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}          " conquer of completion
 " Plug 'dense-analysis/ale'                               " asynchronous linting engine plugin
 " Plug 'maximbaz/lightline-ale'                           " provides ALE indications in lightline
 Plug 'nvie/vim-flake8'                                  " static syntax checker and PEP8 style checker
@@ -110,7 +110,7 @@ inoremap <C-f> <Esc><Esc>:BLines!<CR>
 let g:rooter_silent_chdir = 1   " no output when changing dir
 
 " CoC
-let g:coc_global_extensions = ['coc-json', 'coc-python']
+" let g:coc_global_extensions = ['coc-json', 'coc-python']
 " source $HOME/.config/nvim/plug-config/coc.vim
 
 " vimspector
