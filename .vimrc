@@ -122,6 +122,9 @@ nmap <leader>de :VimspectorEval
 nmap <leader>dw :VimspectorWatch
 nmap <leader>do :VimspectorShowOutput
 
+" markdown
+let g:indentLine_fileTypeExclude = ['markdown']
+
 
 " copy current buffer
 nmap <leader>y ggVG"+y
